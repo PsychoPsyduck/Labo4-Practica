@@ -1,0 +1,19 @@
+<div class="card border-dark" *ngIf="pelicula">
+    <div class="colum no-gutters">
+        <div class="col-md-12 divImg" >
+            <img [src]="pelicula.foto" class="img-thumbnail imagenDeMenu" alt="Avatar">
+        </div>
+        <div class="col-md-12">
+            <div class="card-body text-center w-100">
+                <h2 class="card-title"> {{ pelicula.nombre | uppercase }} </h2>
+                <h5 class="card-title"> {{ pelicula.tipo | uppercase }} </h5>
+                <p class="card-text"> Estreno: {{ pelicula.fecha_estreno}} </p>
+                <p class="card-text"> Publico: {{ pelicula.cantidad_publico }} personas</p>
+                <!-- <p class="card-text" *ngIf="pelicula.actor"> Actor: {{ pelicula.actor}} </p> -->
+                <button class="btn btn-danger btn-block" *ngIf="borrado === 1" (click)="borrarPelicula(pelicula.id)">
+                    <i class="fas fa-trash"></i> Borrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

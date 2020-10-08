@@ -1,0 +1,28 @@
+<div class="container">
+    <table class="table table-bordered tabla-dark">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Fecha de Estreno</th>
+            <th>Público</th>
+            <!-- <th>Actor</th> -->
+            <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let pelis of listadoEntidades; let i = index" (click)="seleccionarPelicula(pelis, i)">
+                <td>{{pelis.nombre}} </td>
+                <td>{{pelis.tipo}} </td>
+                <td>{{pelis.fecha_estreno}} </td>
+                <td>{{pelis.cantidad_publico}} </td>
+                <!-- <td>{{pelis.foto}} </td> -->
+                <td> <img [src]="pelis.foto" alt=""></td>
+            </tr>     
+        </tbody>
+    </table>
+</div>
+
+<!-- <div>
+    <button (click)="cargarTabla()" >Cargar</button>
+</div> -->

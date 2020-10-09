@@ -1,3 +1,90 @@
 <div>
     <h1>Pelicula - Alta</h1>
 </div>
+
+<div class="row">
+    <div class="col-6 p-5">
+        <h3>Alta de Película</h3>
+        <hr>
+        <form [formGroup]="form" (ngSubmit)="guardar()">
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Nombre</label>
+                <div class="col">
+                    <input formControlName="nombre" id="nombre" class="form-control" type="text"> 
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert-danger">
+                        <div *ngIf="nombre.errors.required">
+                            Nombre es requerido
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Tipo</label>
+                <div class="col">
+                    <select class="form-control" name="tipo" formControlName="tipo" >
+                        <option value="terror">Terror</option>
+                        <option value="amor">Amor</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                    <div *ngIf="tipo.invalid && (tipo.dirty || tipo.touched)" class="alert-danger">
+                        <div *ngIf="tipo.errors.required">
+                            Tipo es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Fecha de Estreno</label>
+                <div class="col">
+                    <input formControlName="fecha_estreno" name="fecha" class="form-control" type="date" placeholder="Fecha de Estreno" >
+                    <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)" class="alert-danger">
+                        <div *ngIf="fecha.errors.required">
+                            Fecha es requerida
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Público estimado</label>
+                <div class="col">
+                    <input formControlName="cantidad_publico" name="publico" class="form-control" type="number" placeholder="Público estimado" >
+                    <div *ngIf="cantidad.invalid && (cantidad.dirty || cantidad.touched)" class="alert-danger">
+                        <div *ngIf="cantidad.errors.required">
+                            Cantidad es requerida
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Actor</label>
+                <div class="col">
+                    <input formControlName="actor" name="actor" class="form-control" type="text" placeholder="Actor" readonly>
+                    
+                    
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">
+                    <div *ngIf="errorMsj" class="alert-danger">
+                        <div>
+                            {{errorMsj}}
+                        </div>
+                    </div>
+                    <div *ngIf="confirmMsj" class="alert-success">
+                        <div>
+                            {{confirmMsj}}
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <button class="btn btn-outline-dark" type="submit">Guardar</button>
+            
+        </form>
+    </div>
+    <div class="col-5 p-5">
+      <app-tabla-actor (actorSeleccionado)="actorSeleccionado($event)"></app-tabla-actor>
+    </div>
+</div>

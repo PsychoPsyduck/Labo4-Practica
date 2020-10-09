@@ -1,6 +1,16 @@
 <div>
     <h1>Pelicula - Listado</h1>
 </div>
-<app-tabla-pelicula>
+
+<div class="row">
+    <div class="col-md-9">
+
+        <app-tabla-pelicula (peliculaSeleccionada)="tomarPeliculaParaDetalles($event)"></app-tabla-pelicula>
     
-</app-tabla-pelicula>
+    </div>
+    <div class="col-md-3">
+    
+        <app-detalle-pelicula (eventoBorrarPelicula)="borrarPelicula($event)" [pelicula]="pelicula" [borrado]="1"></app-detalle-pelicula>
+    
+    </div>
+</div>

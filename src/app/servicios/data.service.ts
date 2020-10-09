@@ -10,7 +10,10 @@ import { Pelicula } from '../clases/pelicula';
 })
 export class DataService {
 
-  constructor(private db: AngularFirestore) { }
+  id;
+  constructor(private db: AngularFirestore) {
+    this.id = this.consult();
+   }
 
   getAllPeliculas() {
     var lista = Array<any>();
@@ -19,6 +22,7 @@ export class DataService {
       querySnapshot.forEach(function(doc) {
           let docum = doc.data();
           let pelicula = new Pelicula(docum.id, docum.nombre, docum.tipo, docum.fecha_estreno, docum.cantidad_publico, docum.foto);
+          pelicula.uid = doc.id;
           lista.push(pelicula);
       });
     })
@@ -39,6 +43,7 @@ export class DataService {
   }
 
   savePelicua(pelicula) {
+    console.log(pelicula)
     return this.db.collection("peliculas").add({
       id: pelicula.id,
       nombre: pelicula.nombre,
@@ -46,6 +51,7 @@ export class DataService {
       fecha_estreno: pelicula.fecha_estreno,
       cantidad_publico: pelicula.cantidad_publico,
       foto: pelicula.foto,
+      actor: pelicula.actor.id,
       activa: 1
     });
   }
@@ -61,5 +67,23 @@ export class DataService {
       activo: 1
     });
   }
+
+  deletePelicua(pelicula) {
+    return firebase.firestore().collection("peliculas").doc(pelicula.uid).update({
+      activo: 0
+    })
+  }
   
+  consult() {
+    var lista = Array<any>();
+    firebase.firestore().collection("peliculas").get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          let docum = doc.data();
+          let pelicula = new Pelicula(docum.id, docum.nombre, docum.tipo, docum.fecha_estreno, docum.cantidad_publico, docum.foto);
+          lista.push(pelicula);
+      });
+    })
+    return lista;
+  }
 }

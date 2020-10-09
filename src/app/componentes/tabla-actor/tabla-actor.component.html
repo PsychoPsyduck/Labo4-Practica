@@ -1,1 +1,24 @@
-<p>tabla-actor works!</p>
+<div class="container">
+    <table class="table table-bordered tabla-dark">
+        <thead>
+            <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+            <!-- <th>Actor</th> -->
+            <th>Foto</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let actor of listadoEntidades; let i = index" (click)="seleccionarActor(actor, i)">
+                <td>{{actor.nombre}} </td>
+                <td>{{actor.apellido}} </td>
+                <td>{{actor.sexo}} </td>
+                <td>{{actor.fecha_de_nacimiento}} </td>
+                <!-- <td>{{actor.foto}} </td> -->
+                <td class="tdFoto"> <img [src]="actor.foto" alt=""></td>
+            </tr>     
+        </tbody>
+    </table>
+</div>

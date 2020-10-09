@@ -17,8 +17,8 @@ export class DetallePeliculaComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  borrarPelicula(id: number) {
-    this.eventoBorrarPelicula.emit(id);
+  borrarPelicula(pelicula) {
+    this.eventoBorrarPelicula.emit(pelicula);
     this.pelicula = null; 
   }
 }

@@ -10,7 +10,9 @@ import { ActorAltaComponent } from './componentes/actor-alta/actor-alta.componen
 import { ActorListadoComponent } from './componentes/actor-listado/actor-listado.component';
 import { PeliculaListadoComponent } from './componentes/pelicula-listado/pelicula-listado.component';
 import { TablaPeliculaComponent } from './componentes/tabla-pelicula/tabla-pelicula.component';
-import { FormsModule } from '@angular/forms';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 
@@ -51,6 +53,7 @@ import { TablaActorComponent } from './componentes/tabla-actor/tabla-actor.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
